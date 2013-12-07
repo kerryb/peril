@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
     @games = Game.order("created_at DESC")
+    render layout: "index"
   end
 
   def show
