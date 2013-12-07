@@ -1,8 +1,6 @@
 module GamesHelper
   def render_score(score, link)
-    link_to(number_with_delimiter(score), link) +
-    " "                                         +
-    image_tag("ruby.png")
+    link_to(number_with_delimiter(score), link)
   end
 
   def render_reward(game, category, answer)
