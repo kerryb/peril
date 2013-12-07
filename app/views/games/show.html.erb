@@ -16,15 +16,3 @@
     <% end %>
   </div>
 <% end %>
-
-<div id="players">
-  <% @game.players.each do |player| %>
-    <div class="player">
-      <div class="content">
-        <%= render_score(player.score, score_path(@game, player)) %>
-        <hr>
-        <span class="player_name"><%= player.name %></span>
-      </div>
-    </div>
-  <% end %>
-</div>

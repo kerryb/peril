@@ -10,6 +10,18 @@
   <body>
     <div id="peril">
       <%= yield %>
+
+      <div id="players">
+        <% @game.players.each_with_index do |player, index| %>
+          <div class="player" id="player-<%= index + 1 %>">
+            <div class="content">
+              <%= render_score(player.score, score_path(@game, player)) %>
+              <hr>
+              <span class="player_name"><%= player.name %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </body>
 </html>
