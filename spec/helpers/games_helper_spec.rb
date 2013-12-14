@@ -11,10 +11,10 @@ require 'spec_helper'
 #   end
 # end
 describe GamesHelper do
-  it "renders a score link followed by the icon" do
+  it "renders a score link" do
     game  = Game.new(name: "Scored")
     score = helper.render_score(200, game_path(game))
-    expect(score).to match(%r{<a\b[^>]+>200</a>\s+<img\b})
+    expect(score).to match(%r{<a\b[^>]+>200</a>})
   end
 
   it "renders blank rewards for viewed answers" do
