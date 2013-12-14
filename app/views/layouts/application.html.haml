@@ -9,6 +9,6 @@
         - @game.players.each_with_index do |player, index|
           .player{:id => "player-#{index + 1}"}
             .content
-              = render_score(player.score, score_path(@game, player))
+              = player.score
               %hr/
               %span.player_name= player.name

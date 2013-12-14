@@ -11,12 +11,6 @@ require 'spec_helper'
 #   end
 # end
 describe GamesHelper do
-  it "renders a score link" do
-    game  = Game.new(name: "Scored")
-    score = helper.render_score(200, game_path(game))
-    expect(score).to match(%r{<a\b[^>]+>200</a>})
-  end
-
   it "renders blank rewards for viewed answers" do
     answer = Answer.new(viewed_at: Time.now)
     expect(helper.render_reward(nil, nil, answer)).to eq("&nbsp;")
@@ -27,7 +21,6 @@ describe GamesHelper do
     reward = answer.category.game.rewards.create!(score: 200)
     link   = helper.render_reward(answer.category.game, answer.category, answer)
     path   = answer_path(answer.category.game, answer.category, reward)
-    score  = helper.render_score(reward.score, path)
-    expect(link).to eq(score)
+    expect(link).to match(%r{<a href="#{path}">200</a>})
   end
 end

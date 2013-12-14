@@ -9,6 +9,8 @@ Peril::Application.routes.draw do
       as: :answer
   get ":game_slug/undo"                         => "events#destroy",
       as: :undo
-  get ":game_slug/:player_id"                   => "scores#create",
-      as: :score
+  get ":game_slug/correct/:player_id"           => "scores#create",
+      as: :correct, defaults: {correct: true}
+  get ":game_slug/wrong/:player_id"             => "scores#create",
+      as: :wrong, defaults: {correct: false}
 end
