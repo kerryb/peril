@@ -4,6 +4,10 @@
 
 $jeopardy_blue: #1213B0;
 
+body {
+  font-family: "Optima"
+}
+
 #game_list {
   padding:   10px;
   font-size: 2em;
@@ -94,7 +98,6 @@ $jeopardy_blue: #1213B0;
     }
 
     .player_name {
-      font-family: "Bradley Hand ITC TT";
       text-shadow: none;
     }
     
