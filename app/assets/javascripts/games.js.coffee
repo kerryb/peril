@@ -5,10 +5,10 @@
 registerBuzz = (player) ->
   unless $(".player.active").length
     $("#buzzer-sound")[0].play()
-    $("#player-#{player}").addClass "active"
+    $("#player-#{player},#score-player-#{player}").addClass "active"
 
 cancelBuzz = ->
-  $(".player").removeClass "active"
+  $(".player,#award-points .score").removeClass "active"
 
 $ ->
   $(document).keypress (event) ->

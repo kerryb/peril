@@ -14,7 +14,8 @@
               %span.player_name= player.name
       #award-points
         - @game.players.each_with_index do |player, index|
-          %form
-            %input.correct{type: "submit", value: "&#10003".html_safe}
-          %form
-            %input.wrong{type: "submit", value: "&#10007".html_safe}
+          %div.score{id: "score-player-#{index + 1}"}
+            %form{action: correct_path(@game, player)}
+              %input.correct{type: "submit", value: "&#10003".html_safe}
+            %form{action: wrong_path(@game, player)}
+              %input.wrong{type: "submit", value: "&#10007".html_safe}

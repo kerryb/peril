@@ -119,8 +119,15 @@ body {
 #award-points {
   margin-top: 40px;
 
-  input {
+  .score {
     display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  input {
     width: 60px;
     height: 60px;
     margin-left: 25px;
