@@ -1,0 +1,6 @@
+- @title = "#{@game.name}:  Categories"
+#intro.full_screen
+  #safe_screen.content &nbsp;
+  - @categories.each do |category|
+    .big_category.content
+      = category.name

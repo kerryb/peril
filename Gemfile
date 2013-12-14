@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 gem 'pg'
 gem "acts_as_list"
 
+gem "haml"
 gem "redcarpet"
 
 # Use SCSS for stylesheets

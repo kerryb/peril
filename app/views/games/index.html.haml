@@ -1,0 +1,6 @@
+- @title = "Loaded Games"
+#game_list
+  %h1 Games
+  %ul
+    - @games.each do |game|
+      %li= link_to game.name, intro_path(game)

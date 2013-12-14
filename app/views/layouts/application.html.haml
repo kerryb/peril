@@ -1,0 +1,14 @@
+!!!
+%html
+  = render partial: "/head"
+  %body
+    #peril
+      %audio#buzzer-sound{:src => "/assets/buzzer.wav"}
+      = yield
+      #players
+        - @game.players.each_with_index do |player, index|
+          .player{:id => "player-#{index + 1}"}
+            .content
+              = render_score(player.score, score_path(@game, player))
+              %hr/
+              %span.player_name= player.name
