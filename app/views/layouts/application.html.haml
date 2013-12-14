@@ -9,6 +9,12 @@
         - @game.players.each_with_index do |player, index|
           .player{:id => "player-#{index + 1}"}
             .content
-              = player.score
+              = number_with_delimiter(player.score)
               %hr/
               %span.player_name= player.name
+      #award-points
+        - @game.players.each_with_index do |player, index|
+          %form
+            %input.correct{type: "submit", value: "&#10003".html_safe}
+          %form
+            %input.wrong{type: "submit", value: "&#10007".html_safe}

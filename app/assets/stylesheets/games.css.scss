@@ -115,3 +115,25 @@ body {
     margin-left: 0px;
   }
 }
+
+#award-points {
+  margin-top: 40px;
+
+  input {
+    display: none;
+    width: 60px;
+    height: 60px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    font-size: 28pt;
+    color: white;
+
+    &.correct {
+      background-color: green;
+    }
+
+    &.wrong {
+      background-color: red;
+    }
+  }
+}
