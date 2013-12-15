@@ -24,11 +24,18 @@ describe ScoresController do
     expect(assigns(:player)).to eq(@player)
   end
 
-  it "builds the scored event" do
+  it "builds a correct score event when the answer was correct" do
     lookup = [:find_by_game_id_and_answer_id, @game.id, @answer.id]
     expect(ScoredEvent.send(*lookup)).to be_nil
-    get :create, game_slug: @game.slug, player_id: @player.id
-    expect(ScoredEvent.send(*lookup)).not_to be_nil
+    get :create, game_slug: @game.slug, player_id: @player.id, correct: true
+    expect(ScoredEvent.send(*lookup).send :correct).to be_true
+  end
+
+  it "builds a wrong score event when the answer was wrong" do
+    lookup = [:find_by_game_id_and_answer_id, @game.id, @answer.id]
+    expect(ScoredEvent.send(*lookup)).to be_nil
+    get :create, game_slug: @game.slug, player_id: @player.id, correct: false
+    expect(ScoredEvent.send(*lookup).send :correct).to be_false
   end
 
   it "just redirects if it cannot score an answer" do

@@ -33,9 +33,4 @@ describe Player do
     player.score = 0.007
     expect(player).to have_an_invalid_field(:score)
   end
-
-  it "requires that score be zero or positive" do
-    player = Player.new(score: -1)
-    expect(player).to have_an_invalid_field(:score)
-  end
 end

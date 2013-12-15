@@ -33,6 +33,7 @@ class ScoredEvent < Event
   #######
 
   def score
-    game.reward_for(answer).score
+    score = game.reward_for(answer).score
+    self.correct ? score : -score
   end
 end
