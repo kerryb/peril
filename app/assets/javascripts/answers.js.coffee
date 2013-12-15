@@ -3,10 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $(document).on 'click', '#safe_screen', (event) ->
-    $(this).hide()
-    $('#answer').css('display', 'table-cell')
-
   $(document).on 'click', '#answer', (event) ->
     $(this).hide()
     $('#question').css('display', 'table-cell')
