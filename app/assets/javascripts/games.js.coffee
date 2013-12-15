@@ -17,7 +17,3 @@ $ ->
       when 50 then registerBuzz 2
       when 51 then registerBuzz 3
       when 32 then cancelBuzz()
-      when 117
-        old_path = window.location.pathname
-        new_path = old_path + "/undo"
-        Turbolinks.visit new_path

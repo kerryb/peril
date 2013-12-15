@@ -60,19 +60,6 @@ describe Game do
     expect(Category.find_by_id(category.id)).to be_nil
   end
 
-  it "has many events" do
-    game  = FactoryGirl.create(:game)
-    event = FactoryGirl.create(:viewed_event, game_id: game.id)
-    expect(game.events(true)).to eq([event])
-  end
-
-  it "removes events with the game" do
-    event = FactoryGirl.create(:viewed_event)
-    event.game.events(true)  # refresh the list so destroy() will see it
-    event.game.destroy
-    expect(ViewedEvent.find_by_id(event.id)).to be_nil
-  end
-
   it "requires a reward for each answer" do
     game     = Game.new(name: "Game")
     category = game.categories.build(name: "Category")

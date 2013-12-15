@@ -41,11 +41,10 @@ describe AnswersController do
   end
 
   it "records the view of the answer" do
-    expect(ViewedEvent.find_by_answer_id(@answer.id)).to be_nil
     get :show, game_slug:     @game.slug,
                category_slug: @category.slug,
                reward_score:  @reward.score
     expect(response).to be_success
-    expect(ViewedEvent.find_by_answer_id(@answer.id)).not_to be_nil
+    expect(@answer.reload.viewed_at).not_to be_nil
   end
 end
