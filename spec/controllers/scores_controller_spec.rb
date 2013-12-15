@@ -24,16 +24,30 @@ describe ScoresController do
     expect(assigns(:player)).to eq(@player)
   end
 
-  it "increments the score when the answer was correct" do
-    expect {
+  context "when the answer was correct" do
+    it "increments the score" do
+      expect {
+        get :create, game_slug: @game.slug, player_id: @player.id, correct: true
+      }.to change { @player.reload.score }.by @reward.score
+    end
+
+    it "redirects back to the game" do
       get :create, game_slug: @game.slug, player_id: @player.id, correct: true
-    }.to change { @player.reload.score }.by @reward.score
+      expect(response).to redirect_to game_path(@game)
+    end
   end
 
-  it "decrements the score event when the answer was wrong" do
-    expect {
+  context "when the answer was wrong" do
+    it "decrements the score" do
+      expect {
+        get :create, game_slug: @game.slug, player_id: @player.id, correct: false
+      }.to change { @player.reload.score }.by(-@reward.score)
+    end
+
+    it "re-renders the answer" do
       get :create, game_slug: @game.slug, player_id: @player.id, correct: false
-    }.to change { @player.reload.score }.by(-@reward.score)
+      expect(response).to render_template "answers/show"
+    end
   end
 
   it "just redirects if it cannot score an answer" do

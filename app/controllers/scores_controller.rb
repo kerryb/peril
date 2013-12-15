@@ -17,6 +17,7 @@ class ScoresController < ApplicationController
         @player.increment(:score, score).save
       else
         @player.decrement(:score, score).save
+        return render "answers/show"
       end
     end
     redirect_to(game_path(@game))
