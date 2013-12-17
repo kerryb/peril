@@ -1,0 +1,4 @@
+- @title = "#{@game.name}:  #{@answer.category.name} for #{@game.reward_for(@answer).score}"
+.full_screen
+  #question.content.show
+    = render_with_code @answer.question

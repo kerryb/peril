@@ -15,6 +15,7 @@ class ScoresController < ApplicationController
       score = @game.reward_for(@answer).score
       if params[:correct]
         @player.increment(:score, score).save
+        return render "answers/confirm"
       else
         @player.decrement(:score, score).save
         return render "answers/show"

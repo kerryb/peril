@@ -31,9 +31,9 @@ describe ScoresController do
       }.to change { @player.reload.score }.by @reward.score
     end
 
-    it "redirects back to the game" do
+    it "renders the answer confirmation" do
       get :create, game_slug: @game.slug, player_id: @player.id, correct: true
-      expect(response).to redirect_to game_path(@game)
+      expect(response).to render_template "answers/confirm"
     end
   end
 
