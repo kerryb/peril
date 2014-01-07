@@ -4,7 +4,7 @@
 
 registerBuzz = (player) ->
   unless $(".player.active").length
-    $("#buzzer-sound")[0].play()
+    $("#buzzer-sound-#{player}")[0].play()
     $("#player-#{player},#score-player-#{player}").addClass "active"
 
 cancelBuzz = ->

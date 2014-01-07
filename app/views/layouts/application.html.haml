@@ -3,7 +3,9 @@
   = render partial: "/head"
   %body
     #peril
-      %audio#buzzer-sound{:src => "/assets/buzzer.wav"}
+      %audio#buzzer-sound-1{:src => "/assets/buzzer-1.wav"}
+      %audio#buzzer-sound-2{:src => "/assets/buzzer-2.wav"}
+      %audio#buzzer-sound-3{:src => "/assets/buzzer-3.wav"}
       = yield
       #players
         - @game.players.each_with_index do |player, index|
