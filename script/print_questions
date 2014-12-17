@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require File.expand_path("../../config/environment", __FILE__)
+
+def format string
+  string.chomp.gsub(/&[rl]squo;/, "'").gsub(/&[rl]dquo;/, '"')
+end
+
+rewards = Reward.order(:id).all
+
+Category.order(:position).all.each do |category|
+  puts
+  puts category.name
+  puts "~" * category.name.length
+  puts
+
+  category.answers.each do |answer|
+    puts "#{rewards[answer.position - 1].score}: #{format(answer.body)}"
+    puts "  #{format(answer.question)}"
+  end
+end
