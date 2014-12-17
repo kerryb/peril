@@ -2,13 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-handleSpaceBar = ->
-  cancelBuzz()
-  revealAnswer()
-
-revealAnswer = ->
-  $("#answer").removeClass "hidden"
-
 registerBuzz = (player) ->
   unless $(".player.active").length
     $("#buzzer-sound-#{player}")[0].play()
@@ -23,4 +16,4 @@ $ ->
       when 49 then registerBuzz 1
       when 50 then registerBuzz 2
       when 51 then registerBuzz 3
-      when 32 then handleSpaceBar()
+      when 32 then cancelBuzz()

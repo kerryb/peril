@@ -1,6 +1,6 @@
 - @title = "#{@game.name}:  #{@answer.category.name} for #{@game.reward_for(@answer).score}"
 .full_screen
-  #answer.content.hidden
+  #answer.content
     = render_with_code @answer.body
   #question.content
     = render_with_code @answer.question
